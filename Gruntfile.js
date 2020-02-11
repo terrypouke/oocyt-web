@@ -14,14 +14,14 @@ var lrSnippet = require("connect-livereload")({
   port: LIVERELOAD_PORT
 });
 
-var mountFolder = function(connect, dir) {
+var mountFolder = function (connect, dir) {
   return require("serve-static")(require("path").resolve(dir));
 };
 
 /**
  * Grunt module
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   /**
    * Dynamically load npm tasks
    */
@@ -45,39 +45,6 @@ module.exports = function(grunt) {
     },
 
     /**
-     * Project banner
-     * Dynamically prepand to CSS/JS files
-     * Inherits text from package.json
-     */
-    tag: {
-      banner:
-        "/*!\n" +
-        " * <%= pkg.name %>\n" +
-        " * <%= pkg.title %>\n" +
-        " * <%= pkg.url %>\n" +
-        " * @author <%= pkg.author %>\n" +
-        " * @version <%= pkg.version %>\n" +
-        " * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n" +
-        " */\n"
-    },
-
-    usebanner: {
-      taskName: {
-        options: {
-          position: "top",
-          banner: "<%= tag.banner %>",
-          linebreak: true
-        },
-        files: {
-          src: [
-            "<%= project.assets %>/css/style.min.css",
-            "<%= project.assets %>/js/scripts.min.js"
-          ]
-        }
-      }
-    },
-
-    /**
      * Connect port/livereload
      * https://github.com/gruntjs/grunt-contrib-connect
      * Starts a local webserver and injects
@@ -90,7 +57,7 @@ module.exports = function(grunt) {
       },
       livereload: {
         options: {
-          middleware: function(connect) {
+          middleware: function (connect) {
             return [lrSnippet, mountFolder(connect, "app")];
           }
         }
@@ -109,17 +76,6 @@ module.exports = function(grunt) {
       ]
     },
 
-    /**
-     * JSHint
-     * https://github.com/gruntjs/grunt-contrib-jshint
-     * Manage the options inside .jshintrc file
-     */
-    jshint: {
-      files: ["src/js/*.js", "Gruntfile.js"],
-      options: {
-        jshintrc: ".jshintrc"
-      }
-    },
 
     /**
      * Concatenate JavaScript files
@@ -278,9 +234,7 @@ module.exports = function(grunt) {
     "sass:dev",
     "autoprefixer:dev",
     "cssmin:dev",
-    "jshint",
     "concat:dev",
-    "usebanner",
     "connect:livereload",
     "open",
     "watch"
@@ -296,8 +250,6 @@ module.exports = function(grunt) {
     "autoprefixer:dist",
     "cssmin:dist",
     "clean:dist",
-    "jshint",
     "uglify",
-    "usebanner"
   ]);
 };

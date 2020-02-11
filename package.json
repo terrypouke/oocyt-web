@@ -1,15 +1,8 @@
 {
-  "name": "fireshell",
-  "title": "Fiercely quick and opinionated front-ends",
-  "url": "http://getfireshell.com",
-  "author": "Todd Motto",
-  "copyright": "2013",
-  "version": "1.1.0",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/toddmotto/fireshell.git"
-  },
+  "name": "oocyt",
+  "title": "A simple quick and opinionated front-ends for oocyt",
+  "author": "Terry Pouke",
+  "version": "1.0",
   "devDependencies": {
     "connect-livereload": "^0.5.4",
     "grunt": "^0.4.5",
@@ -27,8 +20,5 @@
     "grunt-open": "^0.2.3",
     "load-grunt-tasks": "~3.4.1",
     "serve-static": "^1.10.2"
-  },
-  "scripts": {
-    "postinstall": "node_modules/.bin/bower install"
   }
 }
