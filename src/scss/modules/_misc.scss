@@ -13,3 +13,19 @@ body {
   background: #fff;
   color: #444;
 }
+.lined {
+  position: relative;
+  padding-bottom: 1.5em;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 5px;
+    background-color: $pink;
+  }
+}
+img {
+  width: 100%;
+}

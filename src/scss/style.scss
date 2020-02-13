@@ -2,7 +2,6 @@
 // SCSS MIXINS
 //----------------------------------*/
 
-@import "mixins/_position.scss";
 @import "mixins/_selection.scss";
 
 //----------------------------------*\
@@ -10,6 +9,7 @@
 //----------------------------------*/
 
 // Config modules
+@import "modules/_reset.scss";
 @import "modules/_vars.scss";
 
 //----------------------------------*\

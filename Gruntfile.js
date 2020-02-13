@@ -9,7 +9,7 @@
 /**
  * Livereload and connect variables
  */
-var LIVERELOAD_PORT = 35729;
+var LIVERELOAD_PORT = 45022;
 var lrSnippet = require("connect-livereload")({
   port: LIVERELOAD_PORT
 });
@@ -45,6 +45,39 @@ module.exports = function (grunt) {
     },
 
     /**
+     * Project banner
+     * Dynamically prepand to CSS/JS files
+     * Inherits text from package.json
+     */
+    tag: {
+      banner:
+        "/*!\n" +
+        " * <%= pkg.name %>\n" +
+        " * <%= pkg.title %>\n" +
+        " * <%= pkg.url %>\n" +
+        " * @author <%= pkg.author %>\n" +
+        " * @version <%= pkg.version %>\n" +
+        " * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n" +
+        " */\n"
+    },
+
+    usebanner: {
+      taskName: {
+        options: {
+          position: "top",
+          banner: "<%= tag.banner %>",
+          linebreak: true
+        },
+        files: {
+          src: [
+            "<%= project.assets %>/css/style.min.css",
+            "<%= project.assets %>/js/scripts.min.js"
+          ]
+        }
+      }
+    },
+
+    /**
      * Connect port/livereload
      * https://github.com/gruntjs/grunt-contrib-connect
      * Starts a local webserver and injects
@@ -52,7 +85,7 @@ module.exports = function (grunt) {
      */
     connect: {
       options: {
-        port: 9992,
+        port: 45510,
         hostname: "*"
       },
       livereload: {
@@ -75,7 +108,6 @@ module.exports = function (grunt) {
         "<%= project.assets %>/css/style.prefixed.css"
       ]
     },
-
 
     /**
      * Concatenate JavaScript files
@@ -172,7 +204,6 @@ module.exports = function (grunt) {
       dev: {
         files: {
           "<%= project.assets %>/css/style.min.css": [
-            "<%= project.src %>/components/normalize-css/normalize.css",
             "<%= project.assets %>/css/style.unprefixed.css"
           ]
         }
@@ -180,7 +211,6 @@ module.exports = function (grunt) {
       dist: {
         files: {
           "<%= project.assets %>/css/style.min.css": [
-            "<%= project.src %>/components/normalize-css/normalize.css",
             "<%= project.assets %>/css/style.prefixed.css"
           ]
         }
@@ -206,7 +236,7 @@ module.exports = function (grunt) {
     watch: {
       concat: {
         files: "<%= project.src %>/js/{,*/}*.js",
-        tasks: ["concat:dev", "jshint"]
+        tasks: ["concat:dev"]
       },
       sass: {
         files: "<%= project.src %>/scss/{,*/}*.{scss,sass}",
@@ -235,6 +265,7 @@ module.exports = function (grunt) {
     "autoprefixer:dev",
     "cssmin:dev",
     "concat:dev",
+    "usebanner",
     "connect:livereload",
     "open",
     "watch"
@@ -251,5 +282,6 @@ module.exports = function (grunt) {
     "cssmin:dist",
     "clean:dist",
     "uglify",
+    "usebanner"
   ]);
 };
