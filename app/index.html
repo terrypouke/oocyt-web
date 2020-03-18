@@ -22,7 +22,7 @@
       <div class="top" data-aos="fade-down">
         <p>Connect on Social Media</p>
         <div class="social-link">
-          <a href="http://facebook.com/oocyt" target="_blank">
+          <a href="https://www.facebook.com/OocytAgency" target="_blank">
             <i class="icon">
               <svg
                 width="16"
@@ -38,7 +38,7 @@
               </svg>
             </i>
           </a>
-          <a href="http://instagram.com/oocyt" target="_blank">
+          <a href="http://instagram.com/oocyt_" target="_blank">
             <i class="icon">
               <svg
                 width="16"
@@ -88,10 +88,6 @@
         <nav>
           <ul>
             <li><a class="scroll-link" href="#intro">Home</a></li>
-            <li><a class="scroll-link" href="#requirement">Requirement</a></li>
-            <li>
-              <a class="scroll-link" href="#compensation">Compensation</a>
-            </li>
             <li>
               <a class="scroll-link" href="#donation-process"
                 >Donation Process</a
@@ -99,7 +95,6 @@
             </li>
             <li><a href="faq.html">FAQs</a></li>
             <li><a href="http://medium.com/oocyt" target="_blank">Blog</a></li>
-            <li><a href="#">Contact Us</a></li>
           </ul>
         </nav>
       </div>
@@ -115,7 +110,9 @@
           </p>
 
           <div class="links">
-            <a class="btn btn-outline white" href="#">Check Eligibility</a>
+            <a class="btn btn-outline white scroll-btn" href="#eligibility"
+              >Check Eligibility</a
+            >
             <a class="btn white" href="#">Become a Donor</a>
           </div>
         </div>
@@ -189,7 +186,7 @@
             />
           </div>
         </div>
-        <div class="knowing">
+        <div class="knowing" id="eligibility">
           <div class="info" data-aos="fade-left" data-aos-delay="100">
             <label>Knowing what it takes</label>
             <h2 class="lined">Who can become an Oocyt Donor?</h2>
@@ -391,7 +388,7 @@
         <ul class="social-links">
           <li><strong>Social Media</strong></li>
           <li>
-            <a href="http://facebook.com/oocyt">
+            <a href="https://www.facebook.com/OocytAgency/">
               <i class="icon">
                 <svg
                   width="16"
@@ -407,7 +404,7 @@
                 </svg>
               </i>
             </a>
-            <a href="http://facebook.com/oocyt">
+            <a href="http://instagram.com/oocyt_">
               <i class="icon">
                 <svg
                   width="16"
@@ -464,7 +461,7 @@
 
       $(function() {
         //Nav scroll
-        $(".scroll-link").click(function(e) {
+        $(".scroll-link, .scroll-btn").click(function(e) {
           e.preventDefault();
           e.stopPropagation();
 
