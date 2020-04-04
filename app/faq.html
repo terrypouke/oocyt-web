@@ -487,24 +487,6 @@
       AOS.init({
         once: true
       });
-
-      $(function() {
-        //Nav scroll
-        $(".scroll-link").click(function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          var href = $(this).attr("href");
-          var top = $(href).offset().top - 20;
-
-          $("html, body").animate(
-            {
-              scrollTop: top
-            },
-            800
-          );
-        });
-      });
     </script>
   </body>
 </html>
